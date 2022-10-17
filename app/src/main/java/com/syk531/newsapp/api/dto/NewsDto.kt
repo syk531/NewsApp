@@ -6,5 +6,4 @@ data class NewsDto (
     var start: Int,
     var display: Int,
     var items: List<NewsItemDto>
-
 )

@@ -1,5 +1,7 @@
 package com.syk531.newsapp.api.dto
 
+import java.sql.Timestamp
+
 data class NewsItemDto (
     var title: String,
     var originallink: String,

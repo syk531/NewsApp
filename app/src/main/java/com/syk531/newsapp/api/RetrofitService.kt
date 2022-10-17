@@ -14,7 +14,6 @@ interface RetrofitService {
     )
     @GET("v1/search/news.json")
     fun getNews(
-
         @Query("query") query: String,
         @Query("display") display: Int,
         @Query("start") start: Int,
