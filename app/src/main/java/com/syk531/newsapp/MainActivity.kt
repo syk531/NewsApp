@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         rv_newsList.setHasFixedSize(true)
 
         thread {
-            val response = RetrofitClient.instance.getNews("한글", 10, 1, "date").execute()
+            val response = RetrofitClient.instance.getNews("주식", 10, 1, "date").execute()
 
             CoroutineScope(Dispatchers.Main).launch {
                 if(response.isSuccessful) {

@@ -6,11 +6,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.syk531.newsapp.api.dto.NewsItemDto
+import org.apache.commons.text.StringEscapeUtils
 import java.text.SimpleDateFormat
-import java.time.Instant
-import java.time.LocalDateTime
-import java.time.LocalTime
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 class NewsAdapter(val newsList: MutableList<NewsItemDto>) : RecyclerView.Adapter<NewsAdapter.CustomViewHolder>() {
@@ -26,9 +23,14 @@ class NewsAdapter(val newsList: MutableList<NewsItemDto>) : RecyclerView.Adapter
     }
 
     override fun onBindViewHolder(holder: NewsAdapter.CustomViewHolder, position: Int) {
-        holder.putDate.text = newsList.get(position).pubDate
-        holder.title.text = newsList.get(position).title
-        holder.description.text = newsList.get(position).description
+        val sf = SimpleDateFormat("yyyy-MM-dd HH:mm")
+        val putDate = sf.format(newsList.get(position).pubDate)
+        val title = StringEscapeUtils.unescapeHtml4(newsList.get(position).title)
+        val description = StringEscapeUtils.unescapeHtml4(newsList.get(position).description)
+
+        holder.putDate.text = putDate
+        holder.title.text = title
+        holder.description.text = description
     }
 
     class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
