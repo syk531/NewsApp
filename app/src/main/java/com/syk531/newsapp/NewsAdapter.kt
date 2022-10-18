@@ -1,9 +1,13 @@
 package com.syk531.newsapp
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.view.menu.MenuView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.syk531.newsapp.api.dto.NewsItemDto
 import org.apache.commons.text.StringEscapeUtils
@@ -15,7 +19,18 @@ class NewsAdapter(val newsList: MutableList<NewsItemDto>) : RecyclerView.Adapter
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsAdapter.CustomViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
-        return CustomViewHolder(view)
+        return CustomViewHolder(view).apply {
+            itemView.setOnClickListener {
+                val curPos: Int = absoluteAdapterPosition
+                val newsItem: NewsItemDto = newsList.get(curPos)
+
+                val intent = Intent(itemView.context, NewsDetailActivity::class.java)
+                intent.putExtra("originallink", newsItem.originallink)
+                ContextCompat.startActivity(itemView.context, intent, null)
+
+                //Toast.makeText(parent.context, "제목 : ${newsItem.title}", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun getItemCount(): Int {

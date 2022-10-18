@@ -13,8 +13,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.NewsApp"
-        tools:targetApi="23">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        tools:targetApi="23"
+        android:usesCleartextTraffic="true">
+
+        <activity
+            android:name=".NewsDetailActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

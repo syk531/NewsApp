@@ -2,6 +2,8 @@ package com.syk531.newsapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.syk531.newsapp.api.RetrofitClient
@@ -19,6 +21,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val bt_search = findViewById<Button>(R.id.bt_search)
+        bt_search.setOnClickListener {
+            val et_search = findViewById<EditText>(R.id.et_search)
+            search(et_search.text.toString())
+        }
+
+    }
+
+    fun search(searchText: String) {
         var items = mutableListOf<NewsItemDto>()
 
         val rv_newsList: RecyclerView = findViewById(R.id.rv_newsList)
@@ -26,23 +38,18 @@ class MainActivity : AppCompatActivity() {
         rv_newsList.setHasFixedSize(true)
 
         thread {
-            val response = RetrofitClient.instance.getNews("주식", 10, 1, "date").execute()
+            val response = RetrofitClient.instance.getNews(searchText, 10, 1, "date").execute()
 
             CoroutineScope(Dispatchers.Main).launch {
                 if(response.isSuccessful) {
                     if(response.code() == 200) {
                         items = response.body()?.items as MutableList<NewsItemDto>
-                        println(123123123)
-
                         rv_newsList.adapter = NewsAdapter(items)
                     }
                 }
             }
 
         }
-
-        println(2342342343)
-
     }
 
 }
