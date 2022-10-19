@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         readExcel()
 
+
         var items = mutableListOf<NewsItemDto>()
 
         val rv_newsList: RecyclerView = findViewById(R.id.rv_newsList)
