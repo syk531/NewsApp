@@ -16,7 +16,6 @@ import java.util.*
 
 class NewsAdapter(val newsList: MutableList<NewsItemDto>) : RecyclerView.Adapter<NewsAdapter.CustomViewHolder>() {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsAdapter.CustomViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
         return CustomViewHolder(view).apply {
