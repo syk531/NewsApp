@@ -8,6 +8,7 @@ import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.syk531.newsapp.api.RetrofitClient
+import com.syk531.newsapp.api.dto.FakeNewsSummaryDto
 import com.syk531.newsapp.api.dto.NewsDto
 import com.syk531.newsapp.api.dto.NewsItemDto
 import jxl.Workbook
@@ -27,11 +28,39 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        println("4444444444444444444")
+
         val bt_search: Button = findViewById(R.id.bt_search)
         bt_search.setOnClickListener {
             val et_search: EditText = findViewById(R.id.et_search)
             search(et_search.text.toString())
         }
+
+
+        val callSearchFakeNewsSummary = RetrofitClient.raspberryInstance.searchFakeNewsSummary()
+        callSearchFakeNewsSummary.enqueue(object : Callback<FakeNewsSummaryDto> {
+            override fun onResponse(
+                call: Call<FakeNewsSummaryDto>,
+                response: Response<FakeNewsSummaryDto>
+            ) {
+                if(response.isSuccessful()) { // <--> response.code == 200
+                    // 성공 처리
+                    println("000000000000000000000000000")
+                    println(response.body()?.company)
+                } else { // code == 400
+                    // 실패 처리
+                    println("111111111111111111111111111")
+                    println("not isSuccessful")
+                }
+            }
+
+            override fun onFailure(call: Call<FakeNewsSummaryDto>, t: Throwable) {
+                println("222222222222222222222222222")
+                println("onFailure")
+            }
+
+        })
+
     }
 
     fun search(str: String) {
@@ -42,7 +71,7 @@ class MainActivity : AppCompatActivity() {
         rv_newsList.setHasFixedSize(true)
 
         thread {
-            val response = RetrofitClient.instance.getNews(str, 10, 1, "sim").execute()
+            val response = RetrofitClient.naverInstance.getNews(str, 10, 1, "sim").execute()
 
             CoroutineScope(Dispatchers.Main).launch {
                 if(response.isSuccessful) {
