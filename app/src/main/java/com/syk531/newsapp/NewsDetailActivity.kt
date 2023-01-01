@@ -18,10 +18,8 @@ class NewsDetailActivity : AppCompatActivity() {
         webView.webViewClient = WebViewClient()
         webView.webChromeClient = WebChromeClient()
 
-
         val originallink = intent.getStringExtra("originallink")!!
         webView.loadUrl(originallink)
-
     }
 
     override fun onBackPressed() { //백버튼 누를 시 수행할 로직 구현

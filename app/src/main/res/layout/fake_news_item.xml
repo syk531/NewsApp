@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@drawable/border"
-    android:id="@+id/cl_list">
+    android:id="@+id/cl_fake_news_list">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,29 +14,29 @@
         android:layout_margin="8dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/cl_list2"
+        app:layout_constraintBottom_toTopOf="@+id/cl_fake_news_list2"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:id="@+id/cl_list1">
+        android:id="@+id/cl_fake_news_list1">
 
         <TextView
-            android:id="@+id/tv_companyName"
+            android:id="@+id/tv_fakeNewsCompany"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/tv_cnt"
+            app:layout_constraintRight_toLeftOf="@+id/tv_fakeNewsDate"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/tv_cnt"
+            android:id="@+id/tv_fakeNewsDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/tv_companyName"
+            app:layout_constraintLeft_toRightOf="@+id/tv_fakeNewsCompany"
             app:layout_constraintRight_toRightOf="parent"
             android:text="TextView" />
 
@@ -48,41 +48,32 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/cl_list1"
+        app:layout_constraintTop_toBottomOf="@+id/cl_fake_news_list1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:id="@+id/cl_list2">
+        android:id="@+id/cl_fake_news_list2">
 
         <TextView
-            android:id="@+id/tv_pubDate"
+            android:id="@+id/tv_fakeNewsTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/tv_title"
+            app:layout_constraintBottom_toTopOf="@+id/tv_fakeNewsContent"
             app:layout_constraintLeft_toRightOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_fakeNewsContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
-            app:layout_constraintTop_toBottomOf="@+id/tv_pubDate"
-            app:layout_constraintBottom_toTopOf="@+id/tv_description"
-            app:layout_constraintLeft_toRightOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title"
-            app:layout_constraintBottom_toTopOf="@+id/tv_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_fakeNewsTitle"
+            app:layout_constraintBottom_toTopOf="parent"
             app:layout_constraintLeft_toRightOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

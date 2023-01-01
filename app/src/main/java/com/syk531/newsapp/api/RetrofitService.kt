@@ -1,6 +1,7 @@
 package com.syk531.newsapp.api
 
 import com.syk531.newsapp.api.dto.Company
+import com.syk531.newsapp.api.dto.FakeNews
 import com.syk531.newsapp.api.dto.NewsDto
 import retrofit2.Call
 import retrofit2.http.GET
@@ -22,4 +23,8 @@ interface RetrofitService {
 
     @GET("searchCompany")
     fun searchCompany(): Call<List<Company>>
+
+    @GET("searchFakeNews")
+    fun searchFakeNews(): Call<List<FakeNews>>
+
 }
