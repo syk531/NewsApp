@@ -1,12 +1,11 @@
 package com.syk531.newsapp.api
 
-import com.syk531.newsapp.api.dto.FakeNewsSummaryDto
+import com.syk531.newsapp.api.dto.Company
 import com.syk531.newsapp.api.dto.NewsDto
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
-import java.util.*
 
 interface RetrofitService {
     @Headers(
@@ -14,13 +13,13 @@ interface RetrofitService {
         "X-Naver-Client-Secret: Sr67C6NgSy"
     )
     @GET("v1/search/news.json")
-    fun getNews(
+    fun searchNews(
         @Query("query") query: String,
         @Query("display") display: Int,
         @Query("start") start: Int,
         @Query("sort") sort: String
     ): Call<NewsDto>
 
-    @GET("searchFakeNewsSummary")
-    fun searchFakeNewsSummary(): Call<FakeNewsSummaryDto>
+    @GET("searchCompany")
+    fun searchCompany(): Call<List<Company>>
 }
