@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat
 
 class FakeNewsAdapter(val fakeNewsList: MutableList<FakeNews>) : RecyclerView.Adapter<FakeNewsAdapter.CustomViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FakeNewsAdapter.CustomViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_fake_news_list, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.fake_news_item, parent, false)
         return FakeNewsAdapter.CustomViewHolder(view)
     }
 

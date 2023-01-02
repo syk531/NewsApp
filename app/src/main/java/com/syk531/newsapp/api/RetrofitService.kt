@@ -25,6 +25,10 @@ interface RetrofitService {
     fun searchCompany(): Call<List<Company>>
 
     @GET("searchFakeNews")
-    fun searchFakeNews(): Call<List<FakeNews>>
+    fun searchFakeNews(
+        @Query("company") company: String,
+        @Query("display") display: Int,
+        @Query("start") start: Int
+    ): Call<List<FakeNews>>
 
 }

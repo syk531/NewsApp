@@ -9,6 +9,8 @@ import com.syk531.newsapp.api.RetrofitClient
 import com.syk531.newsapp.api.dto.Company
 import com.syk531.newsapp.api.dto.FakeNews
 import com.syk531.newsapp.api.dto.NewsItemDto
+import com.syk531.newsapp.const.Const
+import com.syk531.newsapp.const.NEWS_DISPLAY_COUNT
 import kotlinx.android.synthetic.main.activity_fake_news_list.*
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
@@ -28,7 +30,7 @@ class FakeNewsListActivity : AppCompatActivity() {
         val companyId = intent.getStringExtra("companyId")!!
         val companyName = intent.getStringExtra("companyName")!!
 
-        searchFakeNews(0)
+        searchFakeNews(companyName, NEWS_DISPLAY_COUNT, 0)
 
         rv_fakeNewsList.adapter = FakeNewsAdapter(fakeNewsList)
         rv_fakeNewsList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -39,14 +41,14 @@ class FakeNewsListActivity : AppCompatActivity() {
                 // 항목 전체 개수
                 val itemTotalCount = recyclerView.adapter!!.itemCount - 1
                 if (lastVisibleItemPosition == itemTotalCount) {
-                    searchFakeNews(itemTotalCount)
+                    searchFakeNews(companyName, NEWS_DISPLAY_COUNT, itemTotalCount)
                 }
             }
         })
     }
 
-    private fun searchFakeNews(startIndex: Int) {
-        RetrofitClient.raspberryInstance.searchFakeNews().enqueue(object : Callback<List<FakeNews>> {
+    private fun searchFakeNews(companyName: String, display: Int, start: Int) {
+        RetrofitClient.raspberryInstance.searchFakeNews(companyName, display, start).enqueue(object : Callback<List<FakeNews>> {
             override fun onResponse(
                 call: Call<List<FakeNews>>,
                 response: Response<List<FakeNews>>
@@ -70,6 +72,6 @@ class FakeNewsListActivity : AppCompatActivity() {
     private fun addFakeNewsList(fakeList: MutableList<FakeNews>) {
         val size = fakeNewsList.size
         fakeNewsList.addAll(fakeList)
-        rv_fakeNewsList.adapter?.notifyItemRangeInserted(size, size+10);
+        rv_fakeNewsList.adapter?.notifyItemRangeInserted(size, size + NEWS_DISPLAY_COUNT);
     }
 }

@@ -93,6 +93,6 @@ class MainActivity : AppCompatActivity() {
     private fun addNewsList(newsList: MutableList<NewsItemDto>) {
         val size = newsItemsList.size
         newsItemsList.addAll(newsList)
-        rv_newsList.adapter?.notifyItemRangeInserted(size, size+10);
+        rv_newsList.adapter?.notifyItemRangeInserted(size, size + NEWS_DISPLAY_COUNT);
     }
 }

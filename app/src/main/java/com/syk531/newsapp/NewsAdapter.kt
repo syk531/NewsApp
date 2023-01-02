@@ -67,10 +67,12 @@ class NewsAdapter(val newsList: MutableList<NewsItemDto>, val companyList: Mutab
 
         //가짜뉴스 건수 클릭
         holder.itemView.tv_cnt.setOnClickListener {
-            val intent = Intent(it.context, FakeNewsListActivity::class.java)
-            intent.putExtra("companyId", companyId)
-            intent.putExtra("companyName", companyName)
-            ContextCompat.startActivity(it.context, intent, null)
+            if(cnt > 0) {
+                val intent = Intent(it.context, FakeNewsListActivity::class.java)
+                intent.putExtra("companyId", companyId)
+                intent.putExtra("companyName", companyName)
+                ContextCompat.startActivity(it.context, intent, null)
+            }
         }
 
         //본문 영역 클릭
