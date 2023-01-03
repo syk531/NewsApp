@@ -95,4 +95,5 @@ class MainActivity : AppCompatActivity() {
         newsItemsList.addAll(newsList)
         rv_newsList.adapter?.notifyItemRangeInserted(size, size + NEWS_DISPLAY_COUNT);
     }
+
 }

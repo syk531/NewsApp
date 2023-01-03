@@ -23,22 +23,22 @@
             android:id="@+id/tv_fakeNewsCompany"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="회사명"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/tv_fakeNewsDate"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            android:text="TextView" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_fakeNewsDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="작성일"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/tv_fakeNewsCompany"
             app:layout_constraintRight_toRightOf="parent"
-            android:text="TextView" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -58,21 +58,22 @@
             android:id="@+id/tv_fakeNewsTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="제목"
             app:layout_constraintBottom_toTopOf="@+id/tv_fakeNewsContent"
             app:layout_constraintLeft_toRightOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_fakeNewsContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintTop_toBottomOf="@+id/tv_fakeNewsTitle"
+            android:text="내용"
             app:layout_constraintBottom_toTopOf="parent"
             app:layout_constraintLeft_toRightOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_fakeNewsTitle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

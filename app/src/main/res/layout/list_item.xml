@@ -23,18 +23,18 @@
             android:id="@+id/tv_companyName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="회사명"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/tv_cnt"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            android:text="TextView" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_cnt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="건수"
             android:textColor="#0C30B6"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -60,31 +60,32 @@
             android:id="@+id/tv_pubDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="작성일"
             app:layout_constraintBottom_toTopOf="@+id/tv_title"
             app:layout_constraintLeft_toRightOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintTop_toBottomOf="@+id/tv_pubDate"
+            android:text="제목"
             app:layout_constraintBottom_toTopOf="@+id/tv_description"
             app:layout_constraintLeft_toRightOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintRight_toRightOf="parent"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pubDate" />
 
         <TextView
             android:id="@+id/tv_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            android:text="내용"
             app:layout_constraintBottom_toTopOf="@+id/tv_title"
             app:layout_constraintLeft_toRightOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
