@@ -19,16 +19,27 @@
         app:layout_constraintRight_toRightOf="parent"
         android:id="@+id/cl_fake_news_list1">
 
+        <ImageView
+            android:id="@+id/tv_fakeNewsCompanyImage"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tv_fakeNewsCompany" />
+
         <TextView
             android:id="@+id/tv_fakeNewsCompany"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="200dp"
             android:text="회사명"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/tv_fakeNewsDate"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintLeft_toRightOf="@+id/tv_fakeNewsCompanyImage"
+            app:layout_constraintRight_toLeftOf="@+id/tv_fakeNewsDate" />
 
         <TextView
             android:id="@+id/tv_fakeNewsDate"
