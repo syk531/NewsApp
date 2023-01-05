@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             val str = et_search.text.toString()
             searchNewsList(str, 1)
 
-            rv_newsList.adapter = NewsAdapter(newsItemsList, companyList)
+            rv_newsList.adapter = NewsAdapter(newsItemsList, companyList, baseContext)
             rv_newsList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)

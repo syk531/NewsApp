@@ -32,7 +32,7 @@ class FakeNewsListActivity : AppCompatActivity() {
 
         searchFakeNews(companyName, NEWS_DISPLAY_COUNT, 0)
 
-        rv_fakeNewsList.adapter = FakeNewsAdapter(fakeNewsList)
+        rv_fakeNewsList.adapter = FakeNewsAdapter(fakeNewsList, baseContext, companyId)
         rv_fakeNewsList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)

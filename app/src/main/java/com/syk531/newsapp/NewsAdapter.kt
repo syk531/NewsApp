@@ -1,24 +1,24 @@
 package com.syk531.newsapp
 
+import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import android.text.Html
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.view.menu.MenuView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.syk531.newsapp.api.dto.Company
 import com.syk531.newsapp.api.dto.NewsItemDto
 import kotlinx.android.synthetic.main.list_item.view.*
-import org.apache.commons.text.StringEscapeUtils
 import java.text.SimpleDateFormat
 import java.util.*
 
-class NewsAdapter(val newsList: MutableList<NewsItemDto>, val companyList: MutableList<Company>) : RecyclerView.Adapter<NewsAdapter.CustomViewHolder>() {
+class NewsAdapter(val newsList: MutableList<NewsItemDto>, val companyList: MutableList<Company>, val context: Context) : RecyclerView.Adapter<NewsAdapter.CustomViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsAdapter.CustomViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
@@ -60,13 +60,16 @@ class NewsAdapter(val newsList: MutableList<NewsItemDto>, val companyList: Mutab
         }
 
         holder.companyName.text = companyName
-        holder.cnt.text = cnt.toString()
+        holder.cnt.text = "가짜뉴스 ${cnt.toString()}건"
         holder.putDate.text = putDate
         holder.title.text = title
         holder.description.text = description
 
+        val companyImageId: Int = context.resources.getIdentifier("company_$companyId", "drawable", "com.syk531.newsapp")
+        holder.companyImage.setImageResource(companyImageId)
+
         //가짜뉴스 건수 클릭
-        holder.itemView.tv_cnt.setOnClickListener {
+        holder.itemView.bt_cnt.setOnClickListener {
             if(cnt > 0) {
                 val intent = Intent(it.context, FakeNewsListActivity::class.java)
                 intent.putExtra("companyId", companyId)
@@ -87,9 +90,10 @@ class NewsAdapter(val newsList: MutableList<NewsItemDto>, val companyList: Mutab
 
     class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val companyName = itemView.findViewById<TextView>(R.id.tv_companyName)
-        val cnt = itemView.findViewById<TextView>(R.id.tv_cnt)
+        val cnt = itemView.findViewById<Button>(R.id.bt_cnt)
         val putDate = itemView.findViewById<TextView>(R.id.tv_pubDate)
         val title = itemView.findViewById<TextView>(R.id.tv_title)
         val description = itemView.findViewById<TextView>(R.id.tv_description)
+        val companyImage = itemView.findViewById<ImageView>(R.id.iv_companyImage)
     }
 }
