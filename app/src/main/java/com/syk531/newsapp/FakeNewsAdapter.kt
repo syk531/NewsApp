@@ -33,7 +33,7 @@ class FakeNewsAdapter(val fakeNewsList: MutableList<FakeNews>, val context: Cont
         val date = fakeNews.date
         val content = fakeNews.content
         val title = fakeNews.title
-        val originalUrl = fakeNews.originalUrl
+        val url = fakeNews.url
 
         holder.fakeNewsCompany.text = company
         holder.fakeNewsContent.text = content
@@ -46,7 +46,7 @@ class FakeNewsAdapter(val fakeNewsList: MutableList<FakeNews>, val context: Cont
         //본문 영역 클릭
         holder.itemView.setOnClickListener {
             val intent = Intent(it.context, NewsDetailActivity::class.java)
-            intent.putExtra("originallink", originalUrl)
+            intent.putExtra("originallink", url)
             ContextCompat.startActivity(it.context, intent, null)
         }
     }
