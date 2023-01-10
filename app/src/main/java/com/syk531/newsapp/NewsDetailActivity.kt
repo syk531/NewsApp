@@ -1,11 +1,12 @@
 package com.syk531.newsapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.webkit.WebChromeClient
+import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+
 
 class NewsDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,6 +14,8 @@ class NewsDetailActivity : AppCompatActivity() {
         setContentView(R.layout.news_detail)
 
         val webView = findViewById<WebView>(R.id.webView)
+        var webSettings = webView.settings
+        webView.settings.domStorageEnabled = true
         webView.settings.javaScriptEnabled = true //자바 스크립트 허용
         /* 웹뷰에서 새 창이 뜨지 않도록 방지 */
         webView.webViewClient = WebViewClient()

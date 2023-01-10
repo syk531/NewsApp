@@ -21,8 +21,8 @@
 
         <ImageView
             android:id="@+id/iv_fakeNewsCompanyImage"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintTop_toTopOf="parent"

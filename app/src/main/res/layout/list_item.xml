@@ -7,8 +7,7 @@
     android:orientation="vertical"
     android:background="@drawable/border"
     android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
-    android:id="@+id/cl_list">
+    android:layout_marginRight="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,14 +17,13 @@
         app:layout_constraintBottom_toTopOf="@+id/cl_list2"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:id="@+id/cl_list1">
 
         <ImageView
             android:id="@+id/iv_companyImage"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -40,27 +38,26 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/iv_companyImage"
-            app:layout_constraintRight_toLeftOf="@+id/bt_cnt" />
-
+            app:layout_constraintRight_toLeftOf="@+id/bt_cnt"
+             />
 
         <Button
             android:id="@+id/bt_cnt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="가짜뉴스 0건"
+            android:text="건수"
             android:textColor="#0C30B6"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/tv_companyName"
             app:layout_constraintRight_toRightOf="parent" />
 
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@+id/cl_list1"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -82,11 +79,11 @@
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="제목"
             app:layout_constraintBottom_toTopOf="@+id/tv_description"
             app:layout_constraintLeft_toRightOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/tv_pubDate" />
 
         <TextView

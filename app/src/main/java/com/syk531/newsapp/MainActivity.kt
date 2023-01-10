@@ -34,9 +34,10 @@ class MainActivity : AppCompatActivity() {
             val str = et_search.text.toString()
             searchNewsList(str, 1)
 
-            rv_newsList.adapter = NewsAdapter(newsItemsList, companyList, baseContext)
+            rv_newsList.adapter = NewsAdapter(newsItemsList, companyList)
             rv_newsList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+
                     super.onScrolled(recyclerView, dx, dy)
                     // 마지막 스크롤된 항목 위치
                     val lastVisibleItemPosition = (recyclerView.layoutManager as LinearLayoutManager?)!!.findLastCompletelyVisibleItemPosition()
@@ -75,7 +76,7 @@ class MainActivity : AppCompatActivity() {
         RetrofitClient.naverInstance.searchNews(searchStr, NEWS_DISPLAY_COUNT, startIndex, NEWS_DEFAULT_SORT).enqueue(object : Callback<NewsDto> {
             override fun onResponse(call: Call<NewsDto>, response: Response<NewsDto>) {
                 if(response.isSuccessful) {
-                    var items = response.body()?.items as MutableList<NewsItemDto>
+                    val items = response.body()?.items as MutableList<NewsItemDto>
                     addNewsList(items)
                 } else {
                     // 실패 처리
@@ -93,7 +94,7 @@ class MainActivity : AppCompatActivity() {
     private fun addNewsList(newsList: MutableList<NewsItemDto>) {
         val size = newsItemsList.size
         newsItemsList.addAll(newsList)
-        rv_newsList.adapter?.notifyItemRangeInserted(size, size + NEWS_DISPLAY_COUNT);
+        rv_newsList.adapter?.notifyDataSetChanged()
     }
 
 }

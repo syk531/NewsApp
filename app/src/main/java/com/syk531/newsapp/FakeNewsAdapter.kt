@@ -16,7 +16,7 @@ import com.syk531.newsapp.api.dto.NewsItemDto
 import kotlinx.android.synthetic.main.list_item.view.*
 import java.text.SimpleDateFormat
 
-class FakeNewsAdapter(val fakeNewsList: MutableList<FakeNews>, val context: Context, val companyId: String) : RecyclerView.Adapter<FakeNewsAdapter.CustomViewHolder>() {
+class FakeNewsAdapter(val fakeNewsList: MutableList<FakeNews>, val companyId: String) : RecyclerView.Adapter<FakeNewsAdapter.CustomViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FakeNewsAdapter.CustomViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.fake_news_item, parent, false)
         return FakeNewsAdapter.CustomViewHolder(view)
@@ -40,7 +40,7 @@ class FakeNewsAdapter(val fakeNewsList: MutableList<FakeNews>, val context: Cont
         holder.fakeNewsDate.text = date
         holder.fakeNewsTitle.text = title
 
-        val companyImageId = context.resources.getIdentifier("company_${companyId}", "drawable", "com.syk531.newsapp")
+        val companyImageId = holder.itemView.context.resources.getIdentifier("company_${companyId}", "drawable", "com.syk531.newsapp")
         holder.fakeNewsCompanyImage.setImageResource(companyImageId)
 
         //본문 영역 클릭
