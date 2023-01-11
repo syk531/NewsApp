@@ -2,7 +2,6 @@ package com.syk531.newsapp
 
 import android.content.Intent
 import android.text.Html
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,10 +13,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.syk531.newsapp.api.dto.Company
 import com.syk531.newsapp.api.dto.NewsItemDto
 import kotlinx.android.synthetic.main.list_item.view.*
-import org.openkoreantext.processor.OpenKoreanTextProcessorJava
-import org.openkoreantext.processor.tokenizer.KoreanTokenizer.KoreanToken
-import scala.collection.Seq
+import org.bitbucket.eunjeon.seunjeon.Analyzer
 import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 
 class NewsAdapter(val newsList: MutableList<NewsItemDto>, val companyList: MutableList<Company>) : RecyclerView.Adapter<NewsAdapter.CustomViewHolder>() {
@@ -67,6 +67,18 @@ class NewsAdapter(val newsList: MutableList<NewsItemDto>, val companyList: Mutab
         holder.title.text = title
         holder.description.text = description
 
+        // 형태소 분석
+        // LNode(아버지/WrappedArray(N),0,3,-1135)
+        //LNode(가/WrappedArray(J),3,4,-738)
+        //LNode(방/WrappedArray(N),4,5,660)
+        //LNode(에/WrappedArray(J),5,6,203)
+        //LNode(들어가/WrappedArray(V),6,9,583)
+        //LNode(신다/WrappedArray(EP, E),9,11,-1256)
+        //LNode(./WrappedArray(S),11,12,325)
+        for (node in Analyzer.parseJava("아버지가방에들어가신다.")) {
+            System.out.println(node)
+        }
+
         val companyImageId: Int = holder.itemView.context.resources.getIdentifier("company_$companyId", "drawable", "com.syk531.newsapp")
         holder.companyImage.setImageResource(companyImageId)
 
@@ -97,5 +109,39 @@ class NewsAdapter(val newsList: MutableList<NewsItemDto>, val companyList: Mutab
         val title = itemView.findViewById<TextView>(R.id.tv_title)
         val description = itemView.findViewById<TextView>(R.id.tv_description)
         val companyImage = itemView.findViewById<ImageView>(R.id.iv_companyImage)
+    }
+
+    private fun getMostUsedWords(text: String): String {
+        //https://bitbucket.org/eunjeon/seunjeon/src/master/
+        //https://docs.google.com/spreadsheets/d/1-9blXKjtjeKZqsf4NzHeYJCrr49-nXeRF6D80udfcwY/edit#gid=589544265
+        //NNG : 일반명사, NNP : 고유명사, NP : 대명사
+		val countPumsaList: ArrayList<String> = ArrayList(Arrays.asList("NNG", "NNP", "NP"))
+        val map: MutableMap<String, Int> = HashMap()
+
+        // 형태소 분석
+        for (node in Analyzer.parseJava(text)) {
+            val featureHead = node.morpheme().featureHead // NNG
+            val surface = node.morpheme().surface // 아버지
+
+            if (!countPumsaList.contains(featureHead)) {
+                continue
+            }
+
+            if (map.containsKey(surface)) {
+                map[surface] = map[surface]!! + 1
+            } else {
+                map[surface] = 1
+            }
+        }
+
+        val keySet: List<String> = ArrayList(map.keys)
+        //keySet.sortedBy { o1: String, o2: String -> map[o2]!!.compareTo(map[o1]!!) }
+
+        for (key in keySet) {
+            print("Key : $key")
+            println(", Val : " + map[key])
+        }
+
+        return ""
     }
 }
