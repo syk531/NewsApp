@@ -19,7 +19,7 @@ object RetrofitClient {
     val raspberryInstance: RetrofitService by lazy {
         val retrofit = Retrofit.Builder()
             .baseUrl("http://220.120.52.234:8081/")
-            //.baseUrl("http://14.34.107.170:8081/")
+            //.baseUrl("http://14.34.107.170:8081/") //로컬
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         retrofit.create(RetrofitService::class.java)

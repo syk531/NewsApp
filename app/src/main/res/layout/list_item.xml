@@ -38,15 +38,14 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/iv_companyImage"
-            app:layout_constraintRight_toLeftOf="@+id/bt_cnt"
+            app:layout_constraintRight_toLeftOf="@+id/tv_mostWord"
              />
 
-        <Button
-            android:id="@+id/bt_cnt"
+        <TextView
+            android:id="@+id/tv_mostWord"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="건수"
-            android:textColor="#0C30B6"
+            android:text="단어"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/tv_companyName"

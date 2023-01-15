@@ -31,4 +31,9 @@ interface RetrofitService {
         @Query("start") start: Int
     ): Call<List<FakeNews>>
 
+    @GET("getMostUsedWords")
+    fun getMostUsedWords(
+        @Query("text") text: String
+    ): Call<String>
+
 }
