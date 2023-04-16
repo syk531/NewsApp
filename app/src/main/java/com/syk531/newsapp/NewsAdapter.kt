@@ -47,7 +47,6 @@ class NewsAdapter(val newsList: MutableList<NewsItemDto>, val companyList: Mutab
 
         var cnt = 0
         var companyId = ""
-        var companyName = ""
         var isCompanyChecked = false
         for(company: Company in companyList) {
             val urlTextList = company.urlTextList
@@ -56,7 +55,6 @@ class NewsAdapter(val newsList: MutableList<NewsItemDto>, val companyList: Mutab
                 if(newsItem.originallink.contains(urlText)) {
                     isCompanyChecked = true
                     cnt = company.cnt
-                    companyName = company.name
                     companyId = company.id
                     break;
                 }
@@ -67,12 +65,11 @@ class NewsAdapter(val newsList: MutableList<NewsItemDto>, val companyList: Mutab
             }
         }
 
-        holder.companyName.text = companyName
         holder.putDate.text = putDate
         holder.title.text = title.toString()
         holder.description.text = description.toString()
 
-        RetrofitClient.raspberryInstance.getMostUsedWords(description.toString()).enqueue(object : Callback<String> {
+        RetrofitClient.raspberryInstance.getMostUsedWords(newsItem.description).enqueue(object : Callback<String> {
             override fun onResponse(
                 call: Call<String>,
                 response: Response<String>
@@ -105,8 +102,7 @@ class NewsAdapter(val newsList: MutableList<NewsItemDto>, val companyList: Mutab
     }
 
     class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val companyName = itemView.findViewById<TextView>(R.id.tv_companyName)
-        val mostWord = itemView.findViewById<Button>(R.id.tv_mostWord)
+        val mostWord = itemView.findViewById<TextView>(R.id.tv_mostWord)
         val putDate = itemView.findViewById<TextView>(R.id.tv_pubDate)
         val title = itemView.findViewById<TextView>(R.id.tv_title)
         val description = itemView.findViewById<TextView>(R.id.tv_description)
