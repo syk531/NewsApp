@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() {
             rv_newsList.adapter = NewsAdapter(newsItemsList, companyList)
             rv_newsList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-
                     super.onScrolled(recyclerView, dx, dy)
                     // 마지막 스크롤된 항목 위치
                     val lastVisibleItemPosition = (recyclerView.layoutManager as LinearLayoutManager?)!!.findLastCompletelyVisibleItemPosition()
